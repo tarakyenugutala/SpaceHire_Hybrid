@@ -11,15 +11,15 @@ public class Base {
 	
 	public WebDriver driver;
 	
-	@BeforeClass
-	public void preCondition()
+	
+	public void OpenBrowser(String url)
 	{
 		driver = new FirefoxDriver();
-		driver.get("http://www.way2automation.com/");
+		driver.get(url);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
-	@AfterClass
-	public void postCondition()
+	
+	public void closeBrowser()
 	{
 		driver.close();
 	}
