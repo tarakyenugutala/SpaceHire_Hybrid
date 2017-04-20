@@ -2,26 +2,38 @@ package spacehire.utilities.com;
 
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
 public class Base {
 	
-	public WebDriver driver;
+	public static WebDriver driver;
 	
 	
 	public void OpenBrowser(String url)
 	{
 		driver = new FirefoxDriver();
 		driver.get(url);
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 	
 	public void closeBrowser()
 	{
 		driver.close();
+	}
+	
+	public static void implicitWait(long waitTime){
+		//polling time is 250ms
+		driver.manage().timeouts().implicitlyWait(waitTime, TimeUnit.SECONDS);
+	}
+	public static void explicitWait(long waitTime, By locator){
+		//polling time is 500 ms
+		WebDriverWait wait = new WebDriverWait(driver, waitTime);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 	}
 	
 
