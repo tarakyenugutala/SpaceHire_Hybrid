@@ -7,8 +7,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 
 public class Base {
 	
@@ -36,5 +34,9 @@ public class Base {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 	}
 	
+	public static void mouseHover()
+	{
+		
+	}
 
 }
