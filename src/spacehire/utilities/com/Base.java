@@ -4,7 +4,9 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -36,7 +38,28 @@ public class Base {
 	
 	public static void mouseHover()
 	{
-		
+		WebElement actionElement = null;
+		Actions action = new Actions(driver);
+		action.moveToElement(actionElement);
+		action.perform();
 	}
+	
+	public static void wait(String wait)
+	{
+		Object implicitWait = null;
+		if(wait.equals(implicitWait))
+		{
+			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		}
+		else
+		{
+			WebElement locator;
+			WebDriverWait waits = new WebDriverWait(driver, 20);
+			waits.until(ExpectedConditions.visibilityOfElementLocated((By) locator));
+		}
+		
+			
+	}
+	
 
 }
